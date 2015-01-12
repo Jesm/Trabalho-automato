@@ -1,0 +1,232 @@
+/* Feito por: Jonathan Szablevski (Nº matrícula: 0134469), Márcio Metz (Nº matrícula: 0135682). Feevale 2014. */
+
+*{
+    margin:0;
+    padding:0;
+}
+html, body, main, canvas{
+    width:100%;
+    height:100%;
+}
+body{
+    position:relative;
+    overflow:hidden;
+    font:16px/1.5 'Segoe UI', sans-serif;
+    background:#111 url('../img/grid17.png') center;
+    color:#FFF;
+}
+a{
+    text-decoration:none;
+    cursor:default;
+}
+ul{
+    list-style:none;
+}
+
+
+canvas{
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+}
+
+#context_menu{
+    position:absolute;
+    z-index:5;
+    display:none;
+    background:rgba(0, 0, 0, .8);
+}
+#context_menu.active{
+    display:block;
+}
+#context_menu ul{
+    width:150px;
+    padding:5px;
+}
+#context_menu a{
+    display:block;
+    padding:5px 10px;
+    font-size:14px;
+    line-height:14px;
+    color:#FFF;
+}
+#context_menu a:hover{
+    background:#333;
+}
+
+.state, .transition{
+    position:absolute;
+    cursor:default;
+    text-align:center;    
+    color:#FFF;
+}
+.state{
+    width:54px;
+    height:54px;
+    border:7px solid #FFF;
+    border-radius:50px;
+    line-height:54px;
+    background:rgba(0, 0, 0, .9);
+    box-shadow:0 0 28px -1px #FFF;
+    transition:box-shadow .3s, border-color .3s, background-color .3s;
+}
+.state:hover{
+    box-shadow:0 0 28px 4px #FFF;
+}
+.state.initial{
+    background:#3EB489;
+}
+.state.final{
+    border-color:#6495ED;
+    box-shadow: 0 0 28px -1px #6495ED;
+}
+.state.final:hover{
+    box-shadow: 0 0 28px 4px #6495ED;
+}
+.trans .state:hover, .trans .state.selected{
+    border-color:#D50F25;
+    box-shadow: 0 0 28px 4px #D50F25;
+}
+
+.transition{
+    width:27px;
+    height:27px;
+    border:3px solid #FFF;
+    border-radius:25px;
+    line-height:22px;
+    background:#F00;
+    box-shadow:0 0 28px -3px #FFF;
+}
+
+.box{    
+    position:absolute;
+    z-index:4;
+}
+.box .label, .box .inner{
+    background:rgba(0, 0, 0, .8);
+}
+.box .label{
+    display:inline-block;
+    padding:0 14px;
+    line-height: 28px;
+    font-weight:bold;
+    font-style:italic;
+    font-variant:small-caps;
+}
+.box .inner{
+    padding:10px;
+}
+.box button{
+    display:block;
+    margin-left:auto;
+    width:100px;
+    height:27px;
+    line-height:24px;
+    border:1px solid #000;
+    text-align:center;
+    font-family:'Segoe UI', sans-serif;
+    font-weight:bold;
+    background:#6495ED;
+    color:#FFF;
+}
+.box button:hover{
+    background:#75A6FE;
+    box-shadow:0 0 28px -3px #75A6FE;
+}
+
+#console{
+    top:20px;
+    right:20px;
+    width:450px;
+}
+#console .label{
+    float:right;
+}
+#console .inner{
+    clear:both;
+}
+#console .holder{
+    position:relative;
+    height:200px;
+    max-height:400px;
+    overflow:hidden;
+    resize:vertical;
+}
+#console .holder ul{
+    width:100%;
+    height:100%;
+    overflow-y:auto;
+}
+#console .holder li{
+    margin:5px 0;
+    font:14px/1.3 consolas;
+}
+#console .holder li:nth-child(even){
+    background:rgba(255, 255, 255, .2);
+}
+#console .holder span{
+    display:inline-block;
+    margin-right:10px;
+}
+#console .holder .error{
+    color:#F90101;
+}
+#console .holder .sucess{
+    color:#0F0;
+}
+#console .holder .error{
+    color:#F00;
+}
+
+#text_edit{
+    left:20px;
+    bottom:20px;
+}
+#text_edit input{
+    display:none;
+}
+#text_edit textarea{
+    display:block;
+    width:400px;
+    max-width:800px;
+    height:120px;
+    padding:10px;
+    border:none;
+    font:14px/1.3 consolas;
+    background:none;
+    color:#FFF;
+}
+
+nav{
+    right:20px;
+    bottom:20px;
+}
+nav.box .inner{
+    padding:0;
+    overflow:hidden;
+}
+nav a{
+    display:block;
+    width:70px;
+    height:70px;
+    float:left;
+    background:center no-repeat;
+    background-size:42px;
+}
+nav a:hover, nav a.selected{
+    background-color:#333;
+}
+nav a:active{
+    background-color:#666;
+}
+nav a.move{
+    background-image:url('../img/icon_circle.png');
+}
+nav a.trans{
+    background-image:url('../img/icon_lines.png');
+}
+nav a.run{
+    background-image:url('../img/icon_play.png');
+}

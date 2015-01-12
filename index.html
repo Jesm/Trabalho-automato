@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Feito por: Jonathan Szablevski (Nº matrícula: 0134469), Márcio Metz (Nº matrícula: 0135682). Feevale 2014. -->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Trabalho Autômato Finito</title>
+        <link rel="stylesheet" href="css/estilo.css">
+    </head>
+    <body>
+        <main>
+            <canvas></canvas>
+        </main>
+            
+        <section id="console" class="box">
+            <div class="label">Console</div>
+            <div class="inner">
+                <button>Limpar</button>
+                <div class="holder">
+                    <ul></ul>
+                </div>
+            </div>                
+        </section>
+
+        <section id="text_edit" class="box">
+            <div class="label">Texto</div>
+            <div class="inner">
+                <button>Carregar .txt</button>
+                <input type="file">
+                <div class="holder">
+                    <textarea></textarea>
+                </div>
+            </div>
+        </section>
+
+        <nav class="box">
+            <div class="inner"></div>
+        </nav>
+    
+        <script src="js/Jesm4.min.js"></script>
+        <script src="js/JesmDrag.js"></script>
+        <script src="js/App.js"></script>
+        <script>
+            App.setup();
+        </script>    
+    </body>
+</html>
